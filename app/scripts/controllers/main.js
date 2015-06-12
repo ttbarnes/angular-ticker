@@ -14,4 +14,21 @@ angular.module('angularTickerApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.actualTickerItems = [
+      {
+        'copy': 'item 1',
+        'author': 'Tom A'
+      },
+      {
+        'copy': 'item 2',
+        'author': 'Tony B'
+      },
+      {
+        'copy': 'item 3',
+        'author': 'Tim C'
+      }
+
+    ];
+
   });

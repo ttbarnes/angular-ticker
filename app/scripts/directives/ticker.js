@@ -15,18 +15,15 @@ angular.module('angularTickerApp')
         tickeritems: '='
       },
       templateUrl: 'views/directives/ticker.html',
-      link: function postLink(scope, elm) {
+      link: function postLink(scope, element) {
 
-        /*
+        scope.$watch(element, function(){
+          var item = document.getElementsByTagName('li');
+          console.info('no of items:', item.length);
 
-        elm.bind('mouseover', function(){
-          elm.addClass('mouseover-test');
+          angular.element(item[1]).addClass('bingo');
+
         });
-
-        elm.bind('mouseout', function(){
-          elm.removeClass('mouseover-test');
-        });
-        */
 
       }
     };

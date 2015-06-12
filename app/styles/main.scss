@@ -48,3 +48,8 @@ ticker {
 .move-up {
   top:-40px;
 }
+
+.move-up-cancel {
+  transition:none;
+  top:0;
+}

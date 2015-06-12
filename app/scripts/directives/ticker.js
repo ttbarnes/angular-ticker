@@ -27,8 +27,11 @@ angular.module('angularTickerApp')
             console.log('interval started');
 
             angular.element(list).addClass('move-up');
-            angular.element(list).append(angular.element(item[0]));
-            angular.element(list).removeClass('move-up');
+
+            setTimeout(function(){
+              angular.element(list).addClass('move-up-cancel');
+              angular.element(list).append(angular.element(item[0]));
+            }, 1000);
 
           }, 5000);
 

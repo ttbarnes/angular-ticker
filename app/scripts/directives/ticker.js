@@ -24,9 +24,11 @@ angular.module('angularTickerApp')
           console.info('no of items:', item.length);
 
           $interval(function(){
-            console.log('this is an interval');
+            console.log('interval started');
 
             angular.element(list).addClass('move-up');
+            angular.element(list).append(angular.element(item[0]));
+            angular.element(list).removeClass('move-up');
 
           }, 5000);
 

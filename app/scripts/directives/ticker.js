@@ -19,14 +19,15 @@ angular.module('angularTickerApp')
       link: function postLink(scope, element) {
 
         scope.$watch(element, function(){
+          var list = document.getElementsByTagName('ul');
           var item = document.getElementsByTagName('li');
           console.info('no of items:', item.length);
-          angular.element(item[1]).addClass('bingo');
-
-
 
           $interval(function(){
             console.log('this is an interval');
+
+            angular.element(list).addClass('move-up');
+
           }, 5000);
 
 

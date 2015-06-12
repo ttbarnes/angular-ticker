@@ -7,8 +7,9 @@
  * # ticker
  */
 angular.module('angularTickerApp')
-  .directive('ticker', function () {
+  .directive('ticker', function ($interval) {
     return {
+
       restrict: 'EA',
       transclude : false,
       scope: {
@@ -20,11 +21,18 @@ angular.module('angularTickerApp')
         scope.$watch(element, function(){
           var item = document.getElementsByTagName('li');
           console.info('no of items:', item.length);
-
           angular.element(item[1]).addClass('bingo');
+
+
+
+          $interval(function(){
+            console.log('this is an interval');
+          }, 5000);
+
 
         });
 
       }
+
     };
   });

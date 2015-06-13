@@ -18,23 +18,31 @@ angular.module('angularTickerApp')
       templateUrl: 'views/directives/ticker.html',
       link: function postLink(scope, element) {
 
+        var list = document.getElementsByTagName('ul');
+        var item = document.getElementsByTagName('li');
+
         scope.$watch(element, function(){
-          var list = document.getElementsByTagName('ul');
-          var item = document.getElementsByTagName('li');
-          console.info('no of items:', item.length);
 
-          $interval(function(){
-            console.log('interval started');
+          if(item.length) {
 
-            angular.element(list).addClass('move-up');
+            console.info('no of items:', item.length);
 
-            setTimeout(function(){
-              angular.element(list).addClass('move-up-cancel');
-              angular.element(list).append(angular.element(item[0]));
-            }, 1000);
+            $interval(function(){
+              console.log('interval started');
 
-          }, 5000);
+              angular.element(list).addClass('move-up');
 
+              setTimeout(function(){
+                angular.element(list).addClass('move-up-cancel');
+                angular.element(list).append(angular.element(item[0]));
+              }, 1000);
+
+            }, 5000);
+
+          } 
+          else {
+            console.error('angularTicker error - no items assigned! \n Ensure that you have the correct value assigned to tickeritems. Eg: \n <ticker tickeritems="myTickerItems"></ticker> \n $scope.myTickerItems = [ {...}, {...} ];');
+          }
 
         });
 

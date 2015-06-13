@@ -21,13 +21,17 @@ angular.module('angularTickerApp')
 
         var list = document.getElementsByTagName('ul'),
             item = document.getElementsByTagName('li'),
-            timing;
+            timing,
+            timingEffect,
+            timingEffectDivideBy = 4;
 
         if (scope.timing) {
           timing = scope.timing;
+          timingEffect = timing / timingEffectDivideBy;
         } 
         else {
           timing = 5000;
+          timingEffect = timing / timingEffectDivideBy;
         }
 
         scope.$watch(element, function(){
@@ -44,7 +48,7 @@ angular.module('angularTickerApp')
               setTimeout(function(){
                 angular.element(list).addClass('move-up-cancel');
                 angular.element(list).append(angular.element(item[0]));
-              }, 1000);
+              }, timingEffect);
 
             }, timing);
 

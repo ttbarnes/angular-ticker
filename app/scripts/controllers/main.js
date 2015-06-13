@@ -15,7 +15,7 @@ angular.module('angularTickerApp')
       'Karma'
     ];
 
-    $scope.actualTickerItems = [
+    $scope.myTickerItems = [
       {
         'copy': 'item 1',
         'author': 'Tom A'
@@ -28,7 +28,6 @@ angular.module('angularTickerApp')
         'copy': 'item 3',
         'author': 'Tim C'
       }
-
     ];
 
   });

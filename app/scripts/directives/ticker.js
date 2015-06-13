@@ -20,7 +20,7 @@ angular.module('angularTickerApp')
       link: function postLink(scope, element) {
 
         var list = document.getElementsByTagName('ul'),
-            item = document.getElementsByTagName('li'),
+            items = document.getElementsByTagName('li'),
             timing,
             timingEffect,
             timingEffectDivideBy = 4;
@@ -36,9 +36,9 @@ angular.module('angularTickerApp')
 
         scope.$watch(element, function(){
 
-          if(item.length) {
+          if(items.length) {
 
-            console.info(item.length + ' items in ticker');
+            console.info(items.length + ' items in ticker');
 
             $interval(function(){
               console.log('interval started');
@@ -47,7 +47,7 @@ angular.module('angularTickerApp')
 
               setTimeout(function(){
                 angular.element(list).addClass('move-up-cancel');
-                angular.element(list).append(angular.element(item[0]));
+                angular.element(list).append(angular.element(items[0]));
               }, timingEffect);
 
             }, timing);

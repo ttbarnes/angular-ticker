@@ -17,16 +17,16 @@ angular.module('angularTickerApp')
 
     $scope.myTickerItems = [
       {
-        'copy': 'item 1',
-        'author': 'Tom A'
+        'title': 'item 1',
+        'copy': 'Tart candy canes gummi bears. Candy canes ice cream cheesecake tart pie powder sweet.'
       },
       {
-        'copy': 'item 2',
-        'author': 'Tony B'
+        'title': 'item 2',
+        'copy': 'Toffee jelly gummies donut cake. Fruitcake soufflé jelly cotton candy.'
       },
       {
-        'copy': 'item 3',
-        'author': 'Tim C'
+        'title': 'item 3',
+        'copy': 'Croissant cheesecake jujubes cupcake pudding apple pie cheesecake muffin.'
       }
     ];
 

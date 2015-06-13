@@ -19,9 +19,9 @@ angular.module('angularTickerApp')
       templateUrl: 'views/directives/ticker.html',
       link: function postLink(scope, element) {
 
-        var list = document.getElementsByTagName('ul');
-        var item = document.getElementsByTagName('li');
-        var timing;
+        var list = document.getElementsByTagName('ul'),
+            item = document.getElementsByTagName('li'),
+            timing;
 
         if (scope.timing) {
           timing = scope.timing;
@@ -34,7 +34,7 @@ angular.module('angularTickerApp')
 
           if(item.length) {
 
-            console.info('no of items:', item.length);
+            console.info(item.length + ' items in ticker');
 
             $interval(function(){
               console.log('interval started');

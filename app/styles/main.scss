@@ -2,7 +2,8 @@
 // endbower
 
 body {
-  padding:0;
+  padding:2em;
+  padding:2rem;
   margin:0;
   font-family:helvetica, arial;
 }
@@ -19,7 +20,7 @@ li {
 ticker {
   display:block;
   position:relative;
-  height:120px;
+  height:195px;
   overflow-y:hidden;
   background:#CCC;
 

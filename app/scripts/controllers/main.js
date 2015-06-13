@@ -27,7 +27,15 @@ angular.module('angularTickerApp')
       {
         'title': 'item 3',
         'copy': 'Croissant cheesecake jujubes cupcake pudding apple pie cheesecake muffin.'
-      }
+      },
+      {
+        'title': 'item 4',
+        'copy': 'jelly beans croissant topping bear claw ice cream tootsie roll snaps.'
+      },
+      {
+        'title': 'item 5',
+        'copy': 'Cheesecake jujubes cupcake pudding apple pie cheesecake lollipop.'
+      },
     ];
 
   });

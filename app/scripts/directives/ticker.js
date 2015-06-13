@@ -13,13 +13,22 @@ angular.module('angularTickerApp')
       restrict: 'EA',
       transclude : false,
       scope: {
-        tickeritems: '='
+        tickeritems: '=',
+        timing: '@'
       },
       templateUrl: 'views/directives/ticker.html',
       link: function postLink(scope, element) {
 
         var list = document.getElementsByTagName('ul');
         var item = document.getElementsByTagName('li');
+        var timing;
+
+        if (scope.timing) {
+          timing = scope.timing;
+        } 
+        else {
+          timing = 5000;
+        }
 
         scope.$watch(element, function(){
 
@@ -37,7 +46,7 @@ angular.module('angularTickerApp')
                 angular.element(list).append(angular.element(item[0]));
               }, 1000);
 
-            }, 5000);
+            }, timing);
 
           } 
           else {

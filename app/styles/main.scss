@@ -35,14 +35,21 @@ ticker {
   li {
     background:#CCC;
     padding:10.5px;
+    transition:opacity 0.3s ease, margin 1s ease;
   }
 }
 
-.move-up {
-  top:-40px;
+.fade-out {
+  opacity:0;
 }
 
-.move-up-cancel {
-  transition:none;
-  top:0;
+.minus-margin-top {
+  margin-top:-40px;
 }
+
+
+
+
+
+
+

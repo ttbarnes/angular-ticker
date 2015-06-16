@@ -43,11 +43,16 @@ angular.module('angularTickerApp')
             $interval(function(){
               console.log('interval started');
 
-              angular.element(list).addClass('move-up');
+              angular.element(items[0]).addClass('fade-out minus-margin-top');
 
               setTimeout(function(){
-                angular.element(list).addClass('move-up-cancel');
-                angular.element(list).append(angular.element(items[0]));
+                angular.element(items[0]).removeClass('fade-out minus-margin-top');
+                angular.element(list).append(angular.element(items[0]).addClass('fade-out'));
+
+                setTimeout(function(){
+                  angular.element(items).removeClass('fade-out');
+                }, timingEffect);
+
               }, timingEffect);
 
             }, timing);

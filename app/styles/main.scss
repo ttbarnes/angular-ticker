@@ -8,7 +8,6 @@ body {
   font-family:helvetica, arial;
 }
 
-
 ul,
 ol,
 dl,
@@ -19,35 +18,25 @@ li {
 
 ticker {
   display:block;
-  position:relative;
   height:195px;
   overflow-y:hidden;
   background:#CCC;
-
-  ul {
-    position:absolute;
-    width:100%;
-    top:0;
-    left:0;
-    transition:all 0.5s ease;
-  }
 
   li {
     background:#CCC;
     padding:10.5px;
     transition:opacity 0.3s ease, margin 1s ease;
   }
+
+  .fade-out {
+    opacity:0;
+  }
+
+  .minus-margin-top {
+    margin-top:-39px;
+  }
+
 }
-
-.fade-out {
-  opacity:0;
-}
-
-.minus-margin-top {
-  margin-top:-40px;
-}
-
-
 
 
 

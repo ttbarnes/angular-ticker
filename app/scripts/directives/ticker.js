@@ -11,7 +11,7 @@ angular.module('angularTickerApp')
     return {
 
       restrict: 'EA',
-      transclude : false,
+      transclude : true,
       scope: {
         tickeritems: '=',
         timing: '@'

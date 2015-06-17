@@ -41,7 +41,7 @@ $scope.myTickerItems = [
 
 angular-ticker styling is as minimal as possible. 
 
-For responsive design in particular, you will more than likely need to adjust some styling; for example the defaults consist of:
+For responsive design in particular, you will more than likely need to adjust some styling; for example:
 
 - The ticker has a default fixed height value of `195px`. Custom styles could be:
 
@@ -51,7 +51,7 @@ ticker {
 }
 ```
 
-- Each ticker `li` has a height of `39px` (this isn't specifically defined). The height of an `li` is used to begin the scrolling effect with a minus margin of the same value. You may want to change this for different breakpoints (mobile could have 2 lines of text for example). Custom styles could be:
+- Each ticker `li` has a height of `39px` (this isn't specifically defined). The height of an `li` is used to begin the scrolling effect with a minus margin of the same value. You may want to change this for different breakpoints (mobile could have 2 lines of text for example). For simplicity, only desktop is catered for as a default. Custom styles could be:
 
 ```
 ticker .minus-margin-top {

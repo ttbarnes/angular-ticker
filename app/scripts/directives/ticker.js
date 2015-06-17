@@ -31,7 +31,7 @@ angular.module('angularTickerApp')
         } 
         else {
           timing = 5000;
-          timingEffect = timing / timingEffectDivideBy;
+          timingEffect = timing / timingEffectDivideBy / timingEffectDivideBy * 2;
         }
 
         scope.$watch(element, function(){
@@ -41,7 +41,6 @@ angular.module('angularTickerApp')
             console.info(items.length + ' items in ticker');
 
             $interval(function(){
-              console.log('interval started');
 
               angular.element(items[0]).addClass('fade-out minus-margin-top');
 

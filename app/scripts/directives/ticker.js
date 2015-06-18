@@ -48,6 +48,8 @@ angular.module('angularTickerApp')
 
             $interval(function(){
 
+              items = element.find('li');
+
               angular.element(items[0]).addClass('fade-out minus-margin-top');
 
               setTimeout(function(){

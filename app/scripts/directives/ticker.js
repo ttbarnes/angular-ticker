@@ -21,9 +21,6 @@ angular.module('angularTickerApp')
 
         element.addClass('hellooooo');
 
-        //var list = document.getElementsByTagName('ul'),
-        //  items = document.getElementsByTagName('li'),
-        
         var timing,
             timingEffect,
             timingEffectDivideBy = 4;
@@ -40,7 +37,8 @@ angular.module('angularTickerApp')
         scope.$watch(element, function(){
 
           var list = element.find('ul'),
-              items = element.find('li');
+              items = element.find('li'),
+              item1;
 
           if(items.length) {
 
@@ -49,15 +47,17 @@ angular.module('angularTickerApp')
             $interval(function(){
 
               items = element.find('li');
+              item1 = angular.element(items[0]);
 
-              angular.element(items[0]).addClass('fade-out minus-margin-top');
+              item1.addClass('fade-out minus-margin-top');
 
               setTimeout(function(){
-                angular.element(items[0]).removeClass('fade-out minus-margin-top');
-                angular.element(list).append(angular.element(items[0]).addClass('fade-out'));
+                item1.removeClass('fade-out minus-margin-top');
+                list.append(item1);
+                item1.addClass('fade-out');
 
                 setTimeout(function(){
-                  angular.element(items).removeClass('fade-out');
+                  items.removeClass('fade-out');
                 }, timingEffect);
 
               }, timingEffect);

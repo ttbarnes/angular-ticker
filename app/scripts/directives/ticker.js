@@ -19,9 +19,12 @@ angular.module('angularTickerApp')
       templateUrl: 'views/directives/ticker.html',
       link: function postLink(scope, element) {
 
-        var list = document.getElementsByTagName('ul'),
-            items = document.getElementsByTagName('li'),
-            timing,
+        element.addClass('hellooooo');
+
+        //var list = document.getElementsByTagName('ul'),
+        //  items = document.getElementsByTagName('li'),
+        
+        var timing,
             timingEffect,
             timingEffectDivideBy = 4;
 
@@ -35,6 +38,9 @@ angular.module('angularTickerApp')
         }
 
         scope.$watch(element, function(){
+
+          var list = element.find('ul'),
+              items = element.find('li');
 
           if(items.length) {
 

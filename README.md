@@ -2,7 +2,7 @@
 
 Simple ticker angular directive (work in progress - not ready for production)
 
-<img src="http://g.recordit.co/yTwkJIOHXx.gif" />
+<img src="http://g.recordit.co/QlZsRw7CyE.gif" />
 
 
 ###Usage

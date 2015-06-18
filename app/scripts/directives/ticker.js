@@ -1,15 +1,8 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name angularTickerApp.directive:ticker
- * @description
- * # ticker
- */
 angular.module('angularTickerApp')
   .directive('ticker', function ($interval) {
     return {
-
       restrict: 'EA',
       transclude : true,
       scope: {
@@ -18,8 +11,6 @@ angular.module('angularTickerApp')
       },
       templateUrl: 'views/directives/ticker.html',
       link: function postLink(scope, element) {
-
-        element.addClass('hellooooo');
 
         var timing,
             timingEffect,

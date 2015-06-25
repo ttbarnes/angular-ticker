@@ -24,7 +24,6 @@ angular.module('angularTickerApp')
             timingEffect = timing / timingEffectDivideBy / timingEffectDivideBy * 2;
           }
 
-
           scope.$watch(element, function(){
 
             var list = element,

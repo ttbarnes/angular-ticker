@@ -1,0 +1,15 @@
+ul,
+[ticker] {
+  margin:{
+    bottom:$spacing-small;
+    left:$spacing-small;
+  }
+  @media (min-width:$bp-medium) {
+    margin-bottom:$spacing-large;
+  }
+}
+
+[ticker] {
+  background:#EEE;
+  margin-left:0;
+}

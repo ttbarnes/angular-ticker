@@ -1,0 +1,19 @@
+[ticker] {
+  display:block;
+  height:195px;
+  overflow-y:hidden;
+
+  li {
+    padding:10.5px;
+    transition:opacity 0.3s ease, margin 1s ease;
+  }
+
+  .fade-out {
+    opacity:0;
+  }
+
+  .minus-margin-top {
+    margin-top:-39px;
+  }
+
+}

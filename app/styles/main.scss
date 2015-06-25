@@ -1,48 +1,7 @@
 // bower:scss
 // endbower
 
-body {
-  padding:2em;
-  padding:2rem;
-  margin:0;
-  font-family:helvetica, arial;
-}
-
-ul,
-ol,
-dl,
-li {
-  margin:0;
-  padding:0;
-}
-
-ul,
-[ticker] {
-  margin-bottom:40px;
-}
-
-[ticker] {
-  display:block;
-  height:195px;
-  overflow-y:hidden;
-  background:#EEE;
-
-  li {
-    padding:10.5px;
-    transition:opacity 0.3s ease, margin 1s ease;
-  }
-
-  .fade-out {
-    opacity:0;
-  }
-
-  .minus-margin-top {
-    margin-top:-39px;
-  }
-
-}
-
-
-
-
-
+@import '_demo-config';
+@import '_demo';
+@import '_angular-ticker';
+@import '_demo-custom-ticker';

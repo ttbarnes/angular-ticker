@@ -1,7 +1,10 @@
 [ticker] {
-  display:block;
-  height:195px;
-  overflow-y:hidden;
+
+  &.activated { 
+    display:block;
+    height:195px;
+    overflow-y:hidden;
+  }
 
   li {
     padding:10.5px;

@@ -30,27 +30,36 @@ angular.module('angularTickerApp')
                 items = element.find('li'),
                 itemFirst;
 
-            console.info(items.length + ' items in ticker');
 
-            $interval(function(){
+            if(items.length) {
+              list.addClass('activated');
 
-              items = list.children('li');
-              itemFirst = angular.element(items[0]);
+              console.info(items.length + ' items in ticker');
 
-              itemFirst.addClass('fade-out minus-margin-top');
+              $interval(function(){
 
-              setTimeout(function(){
-                itemFirst.removeClass('fade-out minus-margin-top');
-                list.append(itemFirst);
-                itemFirst.addClass('fade-out');
+                items = list.children('li');
+                itemFirst = angular.element(items[0]);
+
+                itemFirst.addClass('fade-out minus-margin-top');
 
                 setTimeout(function(){
-                  items.removeClass('fade-out');
+                  itemFirst.removeClass('fade-out minus-margin-top');
+                  list.append(itemFirst);
+                  itemFirst.addClass('fade-out');
+
+                  setTimeout(function(){
+                    items.removeClass('fade-out');
+                  }, timingEffect);
+
                 }, timingEffect);
 
-              }, timingEffect);
+              }, timing);
 
-            }, timing);
+            }
+            else {
+              console.error('no items assigned to ticker! Ensure you have correctly assigned items to your ng-repeat.');
+            }
 
           });
 

@@ -61,7 +61,7 @@ Depending on your requirements and for responsive design in particular, you will
 - The ticker has a default fixed height value of `195px`. Custom styles could be:
 
 ```
-[ticker] {
+[ticker].activated {
   height:250px;
 }
 ```

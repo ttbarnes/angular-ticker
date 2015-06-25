@@ -16,7 +16,29 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  describe('ticker items', function(){
+
+    it('should have a list defined', function () {
+      expect(scope.myTickerItems).toBeDefined();
+    });
+
+    it('should have 5 items', function () {
+      expect(scope.myTickerItems.length).toEqual(5);
+    });
+
+    it('should have title and copy properties', function(){
+      expect(scope.myTickerItems[0].title.length).toBeDefined();
+      expect(scope.myTickerItems[0].copy.length).toBeDefined();
+      expect(scope.myTickerItems[1].title.length).toBeDefined();
+      expect(scope.myTickerItems[1].copy.length).toBeDefined();
+      expect(scope.myTickerItems[2].title.length).toBeDefined();
+      expect(scope.myTickerItems[2].copy.length).toBeDefined();
+      expect(scope.myTickerItems[3].title.length).toBeDefined();
+      expect(scope.myTickerItems[3].copy.length).toBeDefined();
+      expect(scope.myTickerItems[4].title.length).toBeDefined();
+      expect(scope.myTickerItems[4].copy.length).toBeDefined();
+    });
+
   });
+
 });

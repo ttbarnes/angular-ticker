@@ -41,7 +41,7 @@ $scope.myTickerItems = [
 
 ###Options
 
-`timing`(optional): accepts string of numbers. Scroll the items every X seconds. Regular JS milliseconds. 
+`timing` (optional): accepts a string of numbers. This scrolls the items every X seconds. Regular JS milliseconds. 
 
 ```
 <ul ticker timing="2500">

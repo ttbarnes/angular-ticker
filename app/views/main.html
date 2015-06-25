@@ -6,7 +6,11 @@
   <li>non-ticker item C</li>
 </ul>
 
-<ticker tickeritems="myTickerItems"></ticker>
+<ul ticker>
+  <li ng-repeat="item in myTickerItems">
+    <b>{{item.title}}</b> - {{item.copy}}
+  </li>
+</ul>
 
 <ul>
   <li>non-ticker item D</li>

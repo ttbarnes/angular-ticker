@@ -3,41 +3,39 @@
 angular.module('angularTickerApp')
   .directive('ticker', function ($interval) {
     return {
-      restrict: 'EA',
-      transclude : true,
-      scope: {
-        tickeritems: '=',
-        timing: '@'
-      },
-      templateUrl: 'views/directives/ticker.html',
-      link: function postLink(scope, element) {
 
-        var timing,
-            timingEffect,
-            timingEffectDivideBy = 4;
+      restrict: 'A',
+      scope: true,
+      //compile: function (element, attributes) {
+      compile: function () {
 
-        if (scope.timing) {
-          timing = scope.timing;
-          timingEffect = timing / timingEffectDivideBy;
-        } 
-        else {
-          timing = 5000;
-          timingEffect = timing / timingEffectDivideBy / timingEffectDivideBy * 2;
-        }
+        return function (scope, element, attributes){
 
-        scope.$watch(element, function(){
+          var timing,
+              timingEffect,
+              timingEffectDivideBy = 4;
 
-          var list = element.find('ul'),
-              items = element.find('li'),
-              item1;
+          if (attributes.timing) {
+            timing = attributes.timing;
+            timingEffect = timing / timingEffectDivideBy;
+          } 
+          else {
+            timing = 5000;
+            timingEffect = timing / timingEffectDivideBy / timingEffectDivideBy * 2;
+          }
 
-          if(items.length) {
+
+          scope.$watch(element, function(){
+
+            var list = element,
+                items = element.find('li'),
+                item1;
 
             console.info(items.length + ' items in ticker');
 
             $interval(function(){
 
-              items = element.find('li');
+              items = list.children('li');
               item1 = angular.element(items[0]);
 
               item1.addClass('fade-out minus-margin-top');
@@ -55,13 +53,9 @@ angular.module('angularTickerApp')
 
             }, timing);
 
-          } 
-          else {
-            console.error('angularTicker error - no items assigned! \n Ensure that you have the correct value assigned to tickeritems. Eg: \n <ticker tickeritems="myTickerItems"></ticker> \n $scope.myTickerItems = [ {...}, {...} ];');
-          }
+          });
 
-        });
-
+        };
       }
 
     };

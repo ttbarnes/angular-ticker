@@ -1,19 +1,33 @@
 <h1>angular-ticker</h1>
 
-<ul>
-  <li>non-ticker item A</li>
-  <li>non-ticker item B</li>
-  <li>non-ticker item C</li>
-</ul>
+<div style="font-size:0.85em;">
+  <p><b>dummy items for testing:</b></p>
+  <ul>
+    <li>non-ticker item A</li>
+    <li>non-ticker item B</li>
+    <li>non-ticker item C</li>
+  </ul>
+</div>
 
+<p><b>simple example:</b></p>
 <ul ticker>
   <li ng-repeat="item in myTickerItems">
     <b>{{item.title}}</b> - {{item.copy}}
   </li>
 </ul>
 
-<ul>
-  <li>non-ticker item D</li>
-  <li>non-ticker item E</li>
-  <li>non-ticker item F</li>
+<div style="font-size:0.85em;">
+  <p><b>dummy items for testing:</b></p>
+  <ul>
+    <li>non-ticker item D</li>
+    <li>non-ticker item E</li>
+    <li>non-ticker item F</li>
+  </ul>
+</div>
+
+<p><b>custom timing of 3000:</b></p>
+<ul ticker timing="3000">
+  <li ng-repeat="item in myTickerItems">
+    {{item.title}}
+  </li>
 </ul>

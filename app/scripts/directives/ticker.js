@@ -28,21 +28,21 @@ angular.module('angularTickerApp')
 
             var list = element,
                 items = element.find('li'),
-                item1;
+                itemFirst;
 
             console.info(items.length + ' items in ticker');
 
             $interval(function(){
 
               items = list.children('li');
-              item1 = angular.element(items[0]);
+              itemFirst = angular.element(items[0]);
 
-              item1.addClass('fade-out minus-margin-top');
+              itemFirst.addClass('fade-out minus-margin-top');
 
               setTimeout(function(){
-                item1.removeClass('fade-out minus-margin-top');
-                list.append(item1);
-                item1.addClass('fade-out');
+                itemFirst.removeClass('fade-out minus-margin-top');
+                list.append(itemFirst);
+                itemFirst.addClass('fade-out');
 
                 setTimeout(function(){
                   items.removeClass('fade-out');

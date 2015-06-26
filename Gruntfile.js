@@ -35,15 +35,15 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
+        tasks: ['newer:jshint:all', 'karma:continuous'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      jsTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
-      },
+      //jsTest: {
+      //  files: ['test/spec/{,*/}*.js'],
+      //  tasks: ['newer:jshint:test', 'karma']
+      //},
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
@@ -408,13 +408,49 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Test settings
+    // karma settings
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      },
+      continuous: {
+        configFile: 'test/karma.conf.js',
+        singleRun: false,
+        autoWatch: true
+      }
+    },
+
+    //protractor settings
+    //jhint ignore:line required due to grunt task name
+    //jhint wants this to be camelCase
+    protractor_webdriver: { // jshint ignore:line
+      start: {
+        options: {
+          path: 'node_modules/protractor/bin/',
+          command: 'webdriver-manager start --standalone',
+          keepAlive : true
+        }
+      }
+    },
+
+    protractor: {
+      options: {
+        keepAlive: true,
+        configFile: 'test/protractor.conf.js',
+        noColor: false,
+
+        args: {
+          seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
+          chromeDriver: 'node_modules/protractor/selenium/chromedriver.exe'
+        }
+      },
+      run: {
+
       }
     }
+
+
   });
 
 
@@ -438,13 +474,17 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
+  grunt.loadNpmTasks('grunt-protractor-webdriver');
+  grunt.loadNpmTasks('grunt-protractor-runner');
+
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'protractor_webdriver',
+    'protractor:run'
   ]);
 
   grunt.registerTask('build', [

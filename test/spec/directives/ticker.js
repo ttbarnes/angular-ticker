@@ -8,6 +8,7 @@ describe('Directive: ticker', function () {
       validTemplate = '<ul ticker timing="timing"><li ng-repeat="items in tickerItems">{{item}}</li></ul>';
 
   function createDirective(data, template) {
+
     var elm;
 
     tickerItems = [
@@ -33,23 +34,15 @@ describe('Directive: ticker', function () {
       }
     ];
 
-
-    // Setup scope state
+    //Setup scope state
     scope.tickerItems = tickerItems;
     scope.timing = 8000;
 
-    // Create directive
+    //create directive
     elm = compile(template || validTemplate)(scope);
 
     scope.$digest();
-    //$timeout.flush()
-    //scope.$apply();
 
-
-    // Trigger watchers
-    //scope.$apply();
-
-    // Return
     return elm;
   }
 
@@ -58,25 +51,41 @@ describe('Directive: ticker', function () {
     // Load the directive's module
     module('angularTickerApp');
 
-    // Provide any mocks needed
-    /*
-    module(function ($provide) {
-      //$provide.value('Name', new MockName());
-    });
-    */
-
     // Inject in angular constructs otherwise,
     //  you would need to inject these into each test
     inject(function ($rootScope, $compile) {
       scope = $rootScope.$new();
       compile = $compile;
-      scope.timing = 5000;
+
+      var timingEffectDivideBy = 4;
+      //mimic default config
+      var defaultTiming = 5000;
+      var defaultTimingEffect = defaultTiming / timingEffectDivideBy * 2;
+
+      //custom config
+      var customTiming = 2500;
+      var customTimingEffect = customTiming / timingEffectDivideBy;
+
+      scope.config = {
+        defaults:{
+          timing: defaultTiming,
+          timingEffectDivideBy: timingEffectDivideBy,
+          timingEffect: defaultTimingEffect
+        },
+        custom:{
+          timing: customTiming,
+          timingEffectDivideBy: timingEffectDivideBy,
+          timingEffect: customTimingEffect
+        }
+      };
+
     });
+
   });
 
-  describe('when created', function () {
+  describe('when created', function(){
 
-    it('should compile template correctly', function () {
+    it('should compile template correctly', function(){
       element = createDirective(tickerItems);
       expect(element).toBeDefined();
     });
@@ -87,9 +96,30 @@ describe('Directive: ticker', function () {
       expect(items.length).toEqual(5);
     });
 
-    it('should have 5000 timer', function(){
-      expect(scope.timing).toEqual(5000);
+    describe('with default config', function(){
+
+      it('should have timer of 5000', function(){
+        expect(scope.config.defaults.timing).toEqual(5000);
+      });
+
+      it('should calculate timingEffect correctly', function(){
+        expect(scope.config.defaults.timingEffect).toEqual(2500);
+      });
+
     });
+
+    describe('with a custom config', function(){
+
+      it('should have timer of 2500', function(){
+        expect(scope.config.custom.timing).toEqual(2500);
+      });
+
+      it('should calculate timingEffect correctly', function(){
+        expect(scope.config.custom.timingEffect).toEqual(625);
+      });
+
+    });
+
 
   });
 

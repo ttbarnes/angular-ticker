@@ -1,6 +1,7 @@
 'use strict';
 
 describe('Directive: ticker', function () {
+
   var element, 
       scope, 
       compile,
@@ -34,7 +35,7 @@ describe('Directive: ticker', function () {
       }
     ];
 
-    //Setup scope state
+    //setup scope state
     scope.tickerItems = tickerItems;
     scope.timing = 8000;
 
@@ -46,13 +47,11 @@ describe('Directive: ticker', function () {
     return elm;
   }
 
-  beforeEach(function () {
+  beforeEach(function(){
 
-    // Load the directive's module
     module('angularTickerApp');
 
-    // Inject in angular constructs otherwise,
-    //  you would need to inject these into each test
+    //inject angular constructs
     inject(function ($rootScope, $compile) {
       scope = $rootScope.$new();
       compile = $compile;
@@ -123,7 +122,6 @@ describe('Directive: ticker', function () {
       });
 
     });
-
 
   });
 

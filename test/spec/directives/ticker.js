@@ -96,6 +96,10 @@ describe('Directive: ticker', function () {
       expect(items.length).toEqual(5);
     });
 
+    it('should add a class', function(){
+      expect(element.hasClass('activated')).toBe(true);
+    });
+
     describe('with default config', function(){
 
       it('should have timer of 5000', function(){
@@ -121,14 +125,6 @@ describe('Directive: ticker', function () {
     });
 
 
-  });
-
-  describe('when the model changes', function () {
-    // Add specs
-  });
-
-  return describe('when destroyed', function () {
-    // Add specs
   });
 
 });

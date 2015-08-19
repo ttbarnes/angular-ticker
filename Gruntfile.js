@@ -349,7 +349,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/concat/scripts',
-          src: '*.js',
+          src: ['*.js', '!oldieshim.js'],
           dest: '.tmp/concat/scripts'
         }]
       }
@@ -463,7 +463,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
-      'autoprefixer:server',
+      'autoprefixer',
       'connect:livereload',
       'watch'
     ]);
@@ -479,13 +479,31 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'wiredep',
+    'wiredep:test',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'protractor_webdriver',
     'protractor:run'
   ]);
+
+  grunt.registerTask('test', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+    grunt.task.run([
+      'clean:server',
+      'wiredep',
+      'wiredep:test',
+      'concurrent:server',
+      'concurrent:test',
+      'autoprefixer',
+      'connect:livereload',
+      'karma:unit',
+      'protractor_webdriver',
+      'protractor:run'
+    ]);
+  });
 
   grunt.registerTask('build', [
     'clean:dist',

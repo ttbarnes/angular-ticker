@@ -1,17 +1,19 @@
 describe('page: home', function() {
 
   beforeEach(function() {
-    browser.get('http://localhost:9000/#/');
+    browser.get('http://localhost:9000');
   });
 
-  /*
-  describe('something', function(){
+  describe('initialisation', function(){
 
-    it('should be defined', function(){ 
+    it('should render 2 tickers', function(){ 
       expect(element(protractor.By.css('ul')).isPresent()).toBe(true);
     });
 
+    it('should render ticker list items', function(){ 
+
+    });
+
   });
-  */
 
 });

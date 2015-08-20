@@ -26,11 +26,11 @@ $scope.myTickerItems = [
 ]
 ```
 
-2) Add the ticker to your template:
+2) Add the ticker to your template (item `$index` is optional):
 
 ```
 <ul ticker>
-  <li ng-repeat="item in myTickerItems">
+  <li ng-repeat="item in myTickerItems" class="item-{{$index}}">
     {{item.title}} - {{item.copy}}
   </li>
 </ul>

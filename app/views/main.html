@@ -11,7 +11,7 @@
 
 <p><b>simple example:</b></p>
 <ul ticker>
-  <li ng-repeat="item in myTickerItems">
+  <li ng-repeat="item in myTickerItems" class="item-{{$index}}">
     <b>{{item.title}}</b> - {{item.copy}}
   </li>
 </ul>

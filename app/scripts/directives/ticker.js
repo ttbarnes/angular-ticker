@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularTickerApp')
-  .directive('ticker', function ($interval) {
+  .directive('ticker', function ($interval, $timeout) {
     return {
 
       restrict: 'A',
@@ -43,12 +43,12 @@ angular.module('angularTickerApp')
 
                 itemFirst.addClass('fade-out minus-margin-top');
 
-                setTimeout(function(){
+                $timeout(function(){
                   itemFirst.removeClass('fade-out minus-margin-top');
                   list.append(itemFirst);
                   itemFirst.addClass('fade-out');
 
-                  setTimeout(function(){
+                  $timeout(function(){
                     items.removeClass('fade-out');
                   }, timingEffect);
 

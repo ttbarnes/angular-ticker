@@ -96,7 +96,7 @@ describe('Directive: ticker', function () {
     });
 
     it('should add a class', function(){
-      expect(element.hasClass('activated')).toBe(true);
+      expect(element.hasClass('active')).toBe(true);
     });
 
     describe('with default config', function(){

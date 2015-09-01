@@ -1,11 +1,8 @@
-var timing = {
-  init: 5000,
-  protractorDelay: 200,
-  effect: 625,
-  effectHalf: 625 / 2,
-  delay: 5000 + 200
-};
-
+//for some reason,
+//$interval and protractor/webdriver specific times are a little 'off'.
+//for example, if our $interval value is 5000
+//for testing, we have to shorten the time by 25
+//eg for 5000, use 4975
 
 describe('ticker', function() {
 
@@ -13,7 +10,26 @@ describe('ticker', function() {
     browser.get('http://localhost:9000');
   });
 
+  var dom = {
+        ticker:{
+          last: element(protractor.By.css('#ticker-no-items'))
+        },
+        listItems: {
+          all: element(protractor.By.css('ul[ticker] li')),
+          first: element(protractor.By.css('ul[ticker] li:nth-child(1)')),
+          last : element(protractor.By.css('ul[ticker] li:last-child'))
+        }
+      },
+      timingInit = 5000,
+      timingPre  = timingInit - 25,
+      timingPost = timingInit + 200,
+      timingLast = timingInit + 825;
+
   describe('initialisation', function(){
+
+    it('should add active class to ticker dom element', function(){
+      expect(element.all(By.css('ticker.active'))).toBeTruthy();
+    });
 
     it('should render 2 lists', function(){ 
       expect(element(protractor.By.css('ul')).isPresent()).toBeTruthy();
@@ -27,9 +43,10 @@ describe('ticker', function() {
       expect(element.all(By.css('ticker'))).toBeTruthy();
     });
 
-    it('should have 2 ticker dom elements', function(){
+    it('should have 3 ticker dom elements', function(){
+      //2 working, 1 declared, but no items.
       var tickers = element.all(protractor.By.css('ul[ticker]'));
-      expect(tickers.count()).toEqual(2);
+      expect(tickers.count()).toEqual(3);
     });
 
     it('should have ng-repeat index classes', function(){
@@ -38,33 +55,69 @@ describe('ticker', function() {
       expect(protractor.By.css('#item-4')).toBeTruthy();
     });
 
-  });
+    describe('if there are no items', function(){
 
-  describe('interaction', function(){
-    var firstChild = element(protractor.By.css('ul[ticker] li:nth-child(1)')),
-        lastChild = element(protractor.By.css('ul[ticker] li:last-child'));
+      it('should not add active class', function(){
+        expect(dom.ticker.last.getAttribute('class')).not.toContain('active');
+      });
 
-    describe('after ' + timing.init + ' seconds', function(){
-
-      it('should add classes to X element', function(){
-        //browser.driver.sleep(timing.init);
-        //expect(firstChild.getAttribute('class')).toMatch('fade-out minus-margin-top');
+      afterEach(function() {
+        browser.manage().logs().get('browser').then(function(browserLog) {
+            var i = 0,
+                consoleWarnings = false;
+            for(i; i<=browserLog.length-1; i++){
+                if(browserLog[i].level.name === 'WARNING'){
+                    consoleWarnings = true;
+                }
+            }
+            expect(consoleWarnings).toBeTruthy();
+        });
       });
 
     });
 
-    describe('after ' + timing.delay + ' seconds', function(){
+  });
 
-      it('should append the first item', function(){
-        browser.driver.sleep(timing.delay);
-        expect(lastChild.getText()).toEqual('item 1 - Tart candy canes gummi bears. Candy canes ice cream cheesecake tart pie powder sweet.');
-      });
+  describe('after ' + timingPre + ' seconds', function(){
 
-      it('should have the original second item as the first dom element', function(){
-        browser.driver.sleep(timing.delay);
-        expect(firstChild.getText()).toEqual('item 2 - Toffee jelly gummies donut cake. Fruitcake soufflé jelly cotton candy.');
-      });
+    beforeEach(function(){
+      browser.driver.sleep(timingPre);
+    });
 
+    it('should add fade-out and minus-margin classes to the first element', function(){
+      expect(dom.listItems.first.getAttribute('class')).toMatch('fade-out minus-margin-top');
+    });
+
+  });
+
+  describe('after ' + timingPost + ' seconds', function(){
+
+    beforeEach(function(){
+      browser.driver.sleep(timingPost);
+    });
+    
+    it('should have removed fade-out and minus-margin classes from the first element', function(){
+      expect(dom.listItems.last.getAttribute('class')).not.toContain('minus-margin-top');
+    });
+
+    it('should have appended the first item', function(){
+      expect(dom.listItems.last.getText()).toEqual('item 1 - Tart candy canes gummi bears. Candy canes ice cream cheesecake tart pie powder sweet.');
+    });
+
+    it('should have the original second item as the first dom element', function(){
+      expect(dom.listItems.first.getText()).toEqual('item 2 - Toffee jelly gummies donut cake. Fruitcake soufflé jelly cotton candy.');
+    });
+
+  });
+
+  describe('after ' + timingLast + ' seconds', function(){
+
+    beforeEach(function(){
+      browser.driver.sleep(timingLast);
+    });
+    
+    it('should have removed all fade-out classes', function(){
+      expect(dom.listItems.all.getAttribute('class')).not.toContain('fade-out');
     });
 
   });

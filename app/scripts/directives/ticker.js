@@ -6,8 +6,7 @@ angular.module('angularTickerApp')
 
       restrict: 'A',
       scope: true,
-      //compile: function (element, attributes) {
-      compile: function () {
+      compile: function(){
 
         return function (scope, element, attributes){
 
@@ -32,9 +31,7 @@ angular.module('angularTickerApp')
 
 
             if(items.length) {
-              list.addClass('activated');
-
-              console.info(items.length + ' items in ticker');
+              list.addClass('active');
 
               $interval(function(){
 
@@ -44,9 +41,8 @@ angular.module('angularTickerApp')
                 itemFirst.addClass('fade-out minus-margin-top');
 
                 $timeout(function(){
-                  itemFirst.removeClass('fade-out minus-margin-top');
+                  itemFirst.removeClass('minus-margin-top');
                   list.append(itemFirst);
-                  itemFirst.addClass('fade-out');
 
                   $timeout(function(){
                     items.removeClass('fade-out');
@@ -58,7 +54,7 @@ angular.module('angularTickerApp')
 
             }
             else {
-              console.error('no items assigned to ticker! Ensure you have correctly assigned items to your ng-repeat.');
+              console.warn('no items assigned to ticker! Ensure you have correctly assigned items to your ng-repeat.');
             }
 
           });

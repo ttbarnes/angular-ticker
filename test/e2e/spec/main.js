@@ -1,13 +1,7 @@
-//for some reason,
-//$interval and protractor/webdriver specific times are a little 'off'.
-//for example, if our $interval value is 5000
-//for testing, we have to shorten the time by 25
-//eg for 5000, use 4975
-
 describe('ticker', function() {
 
   beforeEach(function() {
-    browser.get('http://localhost:9000');
+    browser.get('http://localhost:9000/#/test');
   });
 
   var dom = {
@@ -20,6 +14,12 @@ describe('ticker', function() {
           last : element(protractor.By.css('ul[ticker] li:last-child'))
         }
       },
+
+      //for some reason,
+      //$interval and protractor/webdriver specific times are a little 'off'.
+      //for example, if our $interval value is 5000
+      //for testing, we have to shorten the time by 25
+      //eg for 5000, use 4975
       timingInit = 5000,
       timingPre  = timingInit - 25,
       timingPost = timingInit + 200,

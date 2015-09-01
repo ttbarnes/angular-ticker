@@ -17,12 +17,13 @@
   <body ng-app="angularTickerApp">
 
     <div class="container">
-      <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+      <div ng-view></div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

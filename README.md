@@ -1,9 +1,6 @@
 # angular-ticker
 
-Simple ticker angular directive (WIP - not ready for production)
-
-<img src="http://g.recordit.co/QlZsRw7CyE.gif" />
-
+Simple angular ticker. [Demo](http://ttbarnes.github.io/angular-ticker)
 
 ###Usage
 

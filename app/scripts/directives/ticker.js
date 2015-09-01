@@ -12,7 +12,8 @@ angular.module('angularTickerApp')
 
           var timing,
               timingEffect,
-              timingEffectDivideBy = 4;
+              timingEffectDivideBy = 4,
+              start;
 
           if (attributes.timing) {
             timing = attributes.timing;
@@ -33,7 +34,7 @@ angular.module('angularTickerApp')
             if(items.length) {
               list.addClass('active');
 
-              $interval(function(){
+              start = $interval(function(){
 
                 items = list.children('li');
                 itemFirst = angular.element(items[0]);
@@ -57,6 +58,10 @@ angular.module('angularTickerApp')
               console.warn('no items assigned to ticker! Ensure you have correctly assigned items to your ng-repeat.');
             }
 
+          });
+
+          element.on('$destroy', function() {
+            $interval.cancel(start, 0);
           });
 
         };

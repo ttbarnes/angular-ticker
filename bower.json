@@ -31,10 +31,11 @@
   "homepage": "http://ttbarnes.github.io/angular-ticker",
   "ignore": [
     "**/.*",
+    "app",
+    "dist",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "test"
   ]
 }
 

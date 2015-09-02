@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name angularTickerApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the angularTickerApp
- */
 angular.module('angularTickerApp')
   .controller('MainCtrl', function ($scope) {
 

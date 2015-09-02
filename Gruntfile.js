@@ -146,6 +146,14 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      release: {
+        files: [{
+          dot: true,
+          src: [
+            'release/{,*/}*'
+          ]
+        }]
+      },
       server: '.tmp'
     },
 
@@ -289,15 +297,13 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+     uglify: {
+       release: {
+         files: {
+          'release/ticker.min.js': ['release/ticker.js']
+         }
+       }
+     },
     // concat: {
     //   dist: {}
     // },
@@ -390,6 +396,14 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      release:{
+        expand: true,
+        cwd: '<%= yeoman.app %>/scripts/directives',
+        src: 'ticker.js',
+        dest: 'release/',
+        flatten: true,
+        filter: 'isFile'
       }
     },
 
@@ -520,6 +534,12 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('releaseBower', [
+    'clean:release',
+    'copy:release',
+    'uglify:release'
   ]);
 
   grunt.registerTask('default', [

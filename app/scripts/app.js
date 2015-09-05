@@ -2,7 +2,8 @@
 
 angular
   .module('angularTickerApp', [
-    'ngRoute'
+    'ngRoute',
+    'simpleAngularTicker'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -1,5 +1,9 @@
 [ticker] {
 
+  * {
+    box-sizing:border-box;
+  }
+
   &.active { 
     display:block;
     height:195px;

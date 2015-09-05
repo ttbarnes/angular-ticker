@@ -237,6 +237,12 @@ module.exports = function (grunt) {
         options: {
           sourcemap: true
         }
+      },
+      release: {
+        options: {
+          specify: '<%= yeoman.app %>/styles/angular-ticker.scss',
+          cssDir: 'release'
+        }
       }
     },
 
@@ -284,19 +290,20 @@ module.exports = function (grunt) {
       }
     },
 
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
+     cssmin: {
+       dist: {
+         files: {
+           '<%= yeoman.dist %>/styles/main.css': [
+             '.tmp/styles/{,*/}*.css'
+           ]
+         }
+       },
+       release: {
+         files: {
+           'release/angular-ticker.min.css': [ 'release/angular-ticker.css' ]
+         }
+       }
+     },
      uglify: {
        release: {
          files: {
@@ -539,7 +546,9 @@ module.exports = function (grunt) {
   grunt.registerTask('releaseBower', [
     'clean:release',
     'copy:release',
-    'uglify:release'
+    'uglify:release',
+    'compass:release',
+    'cssmin:release'
   ]);
 
   grunt.registerTask('default', [

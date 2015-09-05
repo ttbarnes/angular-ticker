@@ -1,0 +1,1 @@
+[ticker] *{box-sizing:border-box}[ticker].active{display:block;height:195px;overflow-y:hidden}[ticker] li{padding:10.5px;transition:opacity .3s ease,margin 1s ease}[ticker] .fade-out{opacity:0}[ticker] .minus-margin-top{margin-top:-39px}

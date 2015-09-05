@@ -1,0 +1,23 @@
+/* line 3, ../app/styles/angular-ticker.scss */
+[ticker] * {
+  box-sizing: border-box;
+}
+/* line 7, ../app/styles/angular-ticker.scss */
+[ticker].active {
+  display: block;
+  height: 195px;
+  overflow-y: hidden;
+}
+/* line 13, ../app/styles/angular-ticker.scss */
+[ticker] li {
+  padding: 10.5px;
+  transition: opacity 0.3s ease, margin 1s ease;
+}
+/* line 18, ../app/styles/angular-ticker.scss */
+[ticker] .fade-out {
+  opacity: 0;
+}
+/* line 22, ../app/styles/angular-ticker.scss */
+[ticker] .minus-margin-top {
+  margin-top: -39px;
+}

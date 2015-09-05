@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('angularTickerApp')
-  .directive('ticker', function ($interval, $timeout) {
+angular.module('simpleAngularTicker', []).
+  directive('ticker', function ($interval, $timeout) {
     return {
 
       restrict: 'A',

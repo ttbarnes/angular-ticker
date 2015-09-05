@@ -300,7 +300,7 @@ module.exports = function (grunt) {
        },
        release: {
          files: {
-           'release/angular-ticker.min.css': [ 'release/angular-ticker.css' ]
+           'release/ticker.min.css': [ 'release/ticker.css' ]
          }
        }
      },

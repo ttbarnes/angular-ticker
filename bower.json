@@ -32,7 +32,9 @@
   "ignore": [
     "**/.*",
     "app",
+    "app/*",
     "dist",
+    "Gruntfile.js",
     "node_modules",
     "bower_components",
     "test"

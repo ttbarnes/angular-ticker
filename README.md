@@ -2,6 +2,12 @@
 
 Simple angular ticker. [Demo](http://ttbarnes.github.io/angular-ticker)
 
+1.723 kb. 0.654 kb minified.
+
+###Dependencies
+
+Angular.
+
 ###Usage
 
 1) Define the items in your controller:

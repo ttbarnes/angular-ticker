@@ -2,6 +2,8 @@
 
 Simple angular ticker. [Demo](http://ttbarnes.github.io/angular-ticker)
 
+[![Bower version](https://badge.fury.io/bo/simple-angular-ticker.png)](http://badge.fury.io/bo/simple-angular-ticker)
+
 1.723 kb. 0.654 kb minified.
 
 ###Dependencies
@@ -10,7 +12,21 @@ Angular.
 
 ###Usage
 
-1) Define the items in your controller:
+1) `bower install simple-angular-ticker --save`
+
+2) Add the scripts and css:
+
+
+`<link rel="stylesheet" href="bower_components/simple-angular-ticker/release/ticker.css">`
+
+`<script src="bower_components/simple-angular-ticker/release/ticker.js"></script>`
+
+3) Add the `simpleAngularTicker` module as a dependancy to your app:
+
+`angular.module('myApp', [ 'simpleAngularTicker' ])`
+
+
+4) Define your ticker items, eg:
 
 ```
 $scope.myTickerItems = [
@@ -29,7 +45,7 @@ $scope.myTickerItems = [
 ]
 ```
 
-2) Add the ticker to your template (item `$index` is optional):
+5) Add the ticker to your template (item `$index` is optional):
 
 ```
 <ul ticker>
@@ -40,7 +56,7 @@ $scope.myTickerItems = [
 ```
 
 
-3) (optional) Customise styles to get the design you desire. See styling notes below.
+6) (optional) Customise styles to get the design you desire. See styling notes below.
 
 ###Options
 
@@ -82,7 +98,3 @@ Depending on your requirements and for responsive design in particular, you will
   }
 }
 ```
-
-
-
-

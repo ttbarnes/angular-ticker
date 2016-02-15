@@ -1,10 +1,10 @@
 {
   "name": "angular-ticker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "ttbarnes <tony@tonybarnes.me>"
   ],
-  "description": "cool plugin",
+  "description": "Simple angular ticker",
   "dependencies": {
     "angular": "~1.4.0",
     "angular-route": "~1.4.5"
@@ -15,7 +15,7 @@
   "main": "app",
   "moduleName": "angularTickerApp",
   "resolutions": {
-    "angular": "1.4.0"
+    "angular": "~1.4.0"
   },
   "moduleType": [
     "node"
@@ -40,4 +40,3 @@
     "test"
   ]
 }
-

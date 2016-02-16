@@ -6,6 +6,7 @@ describe('ticker', function() {
 
   var dom = {
         ticker:{
+          first: element(protractor.By.css('ul[ticker]')),
           last: element(protractor.By.css('#ticker-no-items'))
         },
         listItems: {
@@ -31,11 +32,11 @@ describe('ticker', function() {
       expect(element.all(By.css('ticker.active'))).toBeTruthy();
     });
 
-    it('should render 2 lists', function(){ 
+    it('should render 2 lists', function(){
       expect(element(protractor.By.css('ul')).isPresent()).toBeTruthy();
     });
 
-    it('should render list items', function(){ 
+    it('should render list items', function(){
       expect(element(protractor.By.css('li')).isPresent()).toBeTruthy();
     });
 
@@ -95,7 +96,7 @@ describe('ticker', function() {
     beforeEach(function(){
       browser.driver.sleep(timingPost);
     });
-    
+
     it('should have removed fade-out and minus-margin classes from the first element', function(){
       expect(dom.listItems.last.getAttribute('class')).not.toContain('minus-margin-top');
     });
@@ -115,11 +116,33 @@ describe('ticker', function() {
     beforeEach(function(){
       browser.driver.sleep(timingLast);
     });
-    
+
     it('should have removed all fade-out classes', function(){
       expect(dom.listItems.all.getAttribute('class')).not.toContain('fade-out');
     });
 
   });
+
+  describe('on mouseenter event', function(){
+
+    it('should not append new items', function(){
+      browser.actions().mouseMove(dom.ticker.first).perform();
+      browser.driver.sleep(timingPost); //mimic a delayed mouseenter
+      expect(dom.listItems.first.getText()).toEqual('item 1 - Tart candy canes gummi bears. Candy canes ice cream cheesecake tart pie powder sweet.');
+    })
+
+  })
+
+  describe('on mouseleave event', function(){
+
+    it('should continue to append new items', function(){
+      browser.actions().mouseMove(dom.ticker.first).perform();
+      browser.driver.sleep(timingPost); //mimic a delayed mouseenter
+      browser.actions().mouseMove(dom.ticker.last).perform();
+      browser.driver.sleep(timingPost); //mimic a delayed mouseleave
+      expect(dom.listItems.first.getText()).toEqual('item 2 - Toffee jelly gummies donut cake. Fruitcake soufflé jelly cotton candy.');
+    })
+
+  })
 
 });

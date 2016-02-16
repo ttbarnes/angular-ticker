@@ -240,7 +240,7 @@ module.exports = function (grunt) {
       },
       release: {
         options: {
-          specify: '<%= yeoman.app %>/styles/angular-ticker.scss',
+          specify: '<%= yeoman.app %>/styles/ticker.scss',
           cssDir: 'release'
         }
       }

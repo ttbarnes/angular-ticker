@@ -4,8 +4,6 @@ Simple angular ticker. [Demo](http://ttbarnes.github.io/angular-ticker)
 
 [![Bower version](https://badge.fury.io/bo/simple-angular-ticker.png)](http://badge.fury.io/bo/simple-angular-ticker)
 
-1.723 kb. 0.654 kb minified.
-
 ###Dependencies
 
 Angular.
@@ -60,7 +58,7 @@ $scope.myTickerItems = [
 
 ###Options
 
-`timing` (optional): accepts a string of numbers. This scrolls the items every X seconds. Regular JS milliseconds. 
+`timing` (optional): accepts a string of numbers. This scrolls the items every X seconds. Regular JS milliseconds.
 
 ```
 <ul ticker timing="2500">

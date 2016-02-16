@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('simpleAngularTicker', []).
-directive('ticker', function ($ainterval, $timeout) {
+directive('ticker', function ($interval, $timeout) {
   return {
 
     restrict: 'A',
@@ -14,8 +14,8 @@ directive('ticker', function ($ainterval, $timeout) {
         timingEffect,
         timingEffectDivideBy = 4,
         isHovered = false,
-        innerTime,
-        start;
+        innerTime = false,
+        start = false;
 
         if (attributes.timing) {
           timing = attributes.timing;
@@ -70,18 +70,12 @@ directive('ticker', function ($ainterval, $timeout) {
           $interval.cancel(start, 0);
         });
 
-        /*
-         *author - mayo
-         *checking for mouse enter the ticker region
-         */
+        //author - mayo
         element.on('mouseenter', function () {
           isHovered = true;
         });
 
-        /*
-         *author - mayo
-         *checking for mouse exit the ticker region
-         */
+        //author - mayo
         element.on('mouseleave', function () {
           isHovered = false;
         });

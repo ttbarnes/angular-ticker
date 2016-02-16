@@ -2,8 +2,8 @@
 
 describe('Directive: ticker', function () {
 
-  var element, 
-      scope, 
+  var element,
+      scope,
       compile,
       tickerItems,
       validTemplate = '<ul ticker timing="timing"><li ng-repeat="items in tickerItems">{{item}}</li></ul>';
@@ -58,8 +58,11 @@ describe('Directive: ticker', function () {
 
       var timingEffectDivideBy = 4;
       //mimic default config
-      var defaultTiming = 5000;
-      var defaultTimingEffect = defaultTiming / timingEffectDivideBy * 2;
+      var defaultTiming = 5000,
+          defaultTimingEffect = defaultTiming / timingEffectDivideBy * 2,
+          isHovered = false,
+          innerTime = false,
+          start = false;
 
       //custom config
       var customTiming = 2500;
@@ -69,7 +72,10 @@ describe('Directive: ticker', function () {
         defaults:{
           timing: defaultTiming,
           timingEffectDivideBy: timingEffectDivideBy,
-          timingEffect: defaultTimingEffect
+          timingEffect: defaultTimingEffect,
+          isHovered : isHovered,
+          innerTime: innerTime,
+          start: start
         },
         custom:{
           timing: customTiming,
@@ -108,6 +114,21 @@ describe('Directive: ticker', function () {
       it('should calculate timingEffect correctly', function(){
         expect(scope.config.defaults.timingEffect).toEqual(2500);
       });
+
+      it('should have isHovered as false', function(){
+        expect(scope.config.defaults.isHovered).toBeDefined()
+        expect(scope.config.defaults.isHovered).toBeFalsy()
+      })
+
+      it('should have innerTime variable', function(){
+        expect(scope.config.defaults.innerTime).toBeDefined()
+        expect(scope.config.defaults.innerTime).toBeFalsy()
+      })
+
+      it('should have startv variable', function(){
+        expect(scope.config.defaults.start).toBeDefined()
+        expect(scope.config.defaults.start).toBeFalsy()
+      })
 
     });
 

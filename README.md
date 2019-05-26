@@ -4,16 +4,15 @@ Simple angular ticker. [Demo](http://ttbarnes.github.io/angular-ticker)
 
 [![Bower version](https://badge.fury.io/bo/simple-angular-ticker.png)](http://badge.fury.io/bo/simple-angular-ticker)
 
-###Dependencies
+## Dependencies
 
 Angular.
 
-###Usage
+## Usage
 
 1) `bower install simple-angular-ticker --save`
 
 2) Add the scripts and css:
-
 
 `<link rel="stylesheet" href="bower_components/simple-angular-ticker/release/ticker.css">`
 
@@ -23,10 +22,9 @@ Angular.
 
 `angular.module('myApp', [ 'simpleAngularTicker' ])`
 
-
 4) Define your ticker items, eg:
 
-```
+```javascript
 $scope.myTickerItems = [
    {
      title: 'item 1',
@@ -45,7 +43,7 @@ $scope.myTickerItems = [
 
 5) Add the ticker to your template (item `$index` is optional):
 
-```
+```html
 <ul ticker>
   <li ng-repeat="item in myTickerItems" class="item-{{$index}}">
     {{item.title}} - {{item.copy}}
@@ -56,11 +54,11 @@ $scope.myTickerItems = [
 
 6) (optional) Customise styles to get the design you desire. See styling notes below.
 
-###Options
+## Options
 
 `timing` (optional): accepts a string of numbers. This scrolls the items every X seconds. Regular JS milliseconds.
 
-```
+```html
 <ul ticker timing="2500">
   <li ng-repeat="item in myTickerItems">
     {{item.title}} - {{item.copy}}
@@ -69,7 +67,7 @@ $scope.myTickerItems = [
 ```
 
 
-###Styling
+## Styling
 
 angular-ticker styling is as minimal as possible. For simplicity, only desktop is catered for as a default.
 
@@ -77,7 +75,7 @@ Depending on your requirements and for responsive design in particular, you will
 
 - The ticker has a default fixed height value of `195px`. Custom styles could be:
 
-```
+```css
 [ticker].active {
   height:250px;
 }
@@ -85,7 +83,7 @@ Depending on your requirements and for responsive design in particular, you will
 
 - Each ticker `li` has a height of `39px` (this isn't specifically defined). The height of an `li` is used to begin the scrolling effect with a minus margin of the same value. You may want to change this for different breakpoints (mobile could have 2 lines of text for example). Custom styles could be:
 
-```
+```css
 [ticker] .minus-margin-top {
   margin-top:-60px;
 }
